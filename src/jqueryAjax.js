@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-function cats(page) {
+function jqueryAjax(page) {
   $.ajax({
     type: 'GET',
     url: page,
@@ -14,4 +14,4 @@ function cats(page) {
   });
 }
 
-export default cats
+export default jqueryAjax

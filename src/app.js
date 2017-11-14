@@ -2,27 +2,29 @@
  * Created by yamadamasashi on 2017/11/10.
  */
 
-const page = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=`;
+const page = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=538d5a0bb971490795914379ca269bc0`;
 
 
-import cats from './cats';
+import jqueryAjax from './jqueryAjax';
 import superagent from './superagent';
-import axios from  './axios_get';
+import axiosGet from  './axios_get';
 
-console.log(cats);
-console.log(axios);
+console.log(jqueryAjax(page));
 
 
 superagent(page)
 .then((resolve) => {
   console.log('superagent1：' + resolve.body.results[0].abstract)
 })
+
+.catch((reject) => {
+  console.log(reject)
+})
+
+
+axiosGet(page)
 .then((resolve) => {
-  superagent(page).then((resolve) => {
-    console.log('superagent2：' + resolve.body.results[0].abstract)
-  }).then((resolve) => {
-    console.log('superagent：3' )
-  })
+  console.log('superagent1：' + resolve.body.results[0].abstract)
 })
 .catch((reject) => {
   console.log(reject)
